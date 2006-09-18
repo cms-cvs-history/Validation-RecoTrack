@@ -1,0 +1,11 @@
+module multiTrackValidator = MultiTrackValidator {
+    vstring label = {"ctfWithMaterialTracks","rsWithMaterialTracks"}
+    #can use also ctf/rsAnalyticalTracks
+    string  sim   = "g4SimHits"
+    string  out   = "validationPlots.root"
+    string  open  = "recreate"
+    double  min   = 0
+    double  max   = 2.5
+    int32   nint  = 50
+}
+
