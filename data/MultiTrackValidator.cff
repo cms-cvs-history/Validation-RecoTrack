@@ -1,3 +1,5 @@
 include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
 
+service = DaqMonitorROOTBackEnd{}
+    
 include "Validation/RecoTrack/data/MultiTrackValidator.cfi"
