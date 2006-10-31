@@ -177,7 +177,7 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
 	if (sqrt(tp->momentum().perp2())<minpt) continue;
 	if ((fabs(tp->parentVertex()->position().perp()))>3.5) continue;
 	if ((fabs(tp->parentVertex()->position().z()))>30) continue;
-	int type = tp->g4Track_begin()->product()->begin()->type();
+	int type = tp->g4Track_begin()->type();
 	if (abs(type)!=13&&abs(type)!=11&&abs(type)!=211&&abs(type)!=321&&abs(type)!=2212) continue;
 	// 	LogDebug("TrackValidator") << "tp->charge(): " << tp->charge()
 	// 				   << "\ntp->trackPSimHit().size(): " << tp->trackPSimHit().size() 
@@ -186,8 +186,7 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
 	h_ptSIM[w]->Fill(sqrt(tp->momentum().perp2()));
 	h_etaSIM[w]->Fill(tp->momentum().eta());
 	h_vertposSIM[w]->Fill(sqrt(tp->vertex().perp2()));
-	int f=0;
-	for (vector<double>::iterator h=etaintervals[w].begin(); h!=etaintervals[w].end()-1; h++){
+	for (unsigned int f=0; f<etaintervals[w].size()-1; f++){
 	  if (fabs(tp->momentum().eta())>etaintervals[w][f]&&
 	      fabs(tp->momentum().eta())<etaintervals[w][f+1]) {
 	    //LogDebug("TrackValidator") << "TrackingParticle with eta: " << tp->momentum().eta() << "\n"
@@ -203,15 +202,16 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
 	    }
 	    if (rt.size()!=0) {
 	      reco::TrackRef t = rt.begin()->first;
-	      if (t->numberOfValidHits()<8) continue;//FIXME TRY WITH SECOND
+ 	      if (t->numberOfValidHits()<8) continue;//FIXME TRY WITH SECOND
+	      //if (t->numberOfValidHits()>=8) {
 	      ats++;
 	      totASS[w][f]++;
 	      hitseta[w][f]+=t->numberOfValidHits();
 	      LogDebug("TrackValidator") << "TrackingParticle #" << st << " with pt=" << t->pt() 
 					 << " associated with quality:" << rt.begin()->second <<"\n";
+	      //}
 	    }
 	  }
-	  f++;
 	}
       }
       if (st!=0) h_tracksSIM[w]->Fill(st);
@@ -264,8 +264,8 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
 	  at++;
 
 	  TrackingParticleRef tpr = tp.begin()->first;
-	  SimTrackRefVector::iterator it=tpr->g4Track_begin();
-	  const SimTrack * assocTrack = &(**it);
+	  //SimTrackRefVector::iterator it=tpr->g4Track_begin();
+	  const SimTrack * assocTrack = &(*tpr->g4Track_begin());
 	
 	  if (associators[ww]=="TrackAssociatorByChi2"){
 	    //association chi2
