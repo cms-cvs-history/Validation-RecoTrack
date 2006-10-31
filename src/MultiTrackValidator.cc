@@ -177,7 +177,7 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
 	if (sqrt(tp->momentum().perp2())<minpt) continue;
 	if ((fabs(tp->parentVertex()->position().perp()))>3.5) continue;
 	if ((fabs(tp->parentVertex()->position().z()))>30) continue;
-	int type = tp->g4Track_begin()->product()->begin()->type();
+	int type = tp->g4Track_begin()->type();
 	if (abs(type)!=13&&abs(type)!=11&&abs(type)!=211&&abs(type)!=321&&abs(type)!=2212) continue;
 	// 	LogDebug("TrackValidator") << "tp->charge(): " << tp->charge()
 	// 				   << "\ntp->trackPSimHit().size(): " << tp->trackPSimHit().size() 
@@ -186,8 +186,7 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
 	h_ptSIM[w]->Fill(sqrt(tp->momentum().perp2()));
 	h_etaSIM[w]->Fill(tp->momentum().eta());
 	h_vertposSIM[w]->Fill(sqrt(tp->vertex().perp2()));
-	int f=0;
-	for (vector<double>::iterator h=etaintervals[w].begin(); h!=etaintervals[w].end()-1; h++){
+	for (unsigned int f=0; f<etaintervals[w].size()-1; f++){
 	  if (fabs(tp->momentum().eta())>etaintervals[w][f]&&
 	      fabs(tp->momentum().eta())<etaintervals[w][f+1]) {
 	    //LogDebug("TrackValidator") << "TrackingParticle with eta: " << tp->momentum().eta() << "\n"
@@ -203,15 +202,16 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
 	    }
 	    if (rt.size()!=0) {
 	      reco::TrackRef t = rt.begin()->first;
-	      if (t->numberOfValidHits()<8) continue;//FIXME TRY WITH SECOND
+ 	      if (t->numberOfValidHits()<8) continue;//FIXME TRY WITH SECOND
+	      //if (t->numberOfValidHits()>=8) {
 	      ats++;
 	      totASS[w][f]++;
 	      hitseta[w][f]+=t->numberOfValidHits();
 	      LogDebug("TrackValidator") << "TrackingParticle #" << st << " with pt=" << t->pt() 
 					 << " associated with quality:" << rt.begin()->second <<"\n";
+	      //}
 	    }
 	  }
-	  f++;
 	}
       }
       if (st!=0) h_tracksSIM[w]->Fill(st);
@@ -236,7 +236,7 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
 
 	std::vector<std::pair<TrackingParticleRef, double> > tp;
 	//Compute fake rate vs eta
-	for (unsigned int f=0; f<etaintervals[w].size(); f++){
+	for (unsigned int f=0; f<etaintervals[w].size()-1; f++){
 	  if (fabs(track->momentum().eta())>etaintervals[w][f]&&
 	      fabs(track->momentum().eta())<etaintervals[w][f+1]) {
 	    totREC[w][f]++;
@@ -264,8 +264,8 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
 	  at++;
 
 	  TrackingParticleRef tpr = tp.begin()->first;
-	  SimTrackRefVector::iterator it=tpr->g4Track_begin();
-	  const SimTrack * assocTrack = &(**it);
+	  //SimTrackRefVector::iterator it=tpr->g4Track_begin();
+	  const SimTrack * assocTrack = &(*tpr->g4Track_begin());
 	
 	  if (associators[ww]=="TrackAssociatorByChi2"){
 	    //association chi2
@@ -405,7 +405,7 @@ void MultiTrackValidator::endJob() {
       for (vector<TH1F*>::iterator h=ptdistrib[w].begin(); h!=ptdistrib[w].end(); h++){
 	fit = new TF1("g","gaus");
 	(*h)->Fit("g");
-	h_ptrmsh[w]->Fill(etaintervals[w][i+1]-0.00001, fit->GetParameter(2));
+	h_ptrmsh[w]->setBinContent(i+1, fit->GetParameter(2));
 	delete fit;
 	i++;
       }
@@ -415,7 +415,7 @@ void MultiTrackValidator::endJob() {
       for (vector<TH1F*>::iterator h=d0distrib[w].begin(); h!=d0distrib[w].end(); h++){
 	fit = new TF1("g","gaus");
 	(*h)->Fit("g");
-	h_d0rmsh[w]->Fill(etaintervals[w][i+1]-0.00001, fit->GetParameter(2));
+	h_d0rmsh[w]->setBinContent(i+1, fit->GetParameter(2));
 	delete fit;
 	i++;
       }
@@ -425,11 +425,11 @@ void MultiTrackValidator::endJob() {
       for (unsigned int j=0; j<totASS[w].size(); j++){
         if (totSIM[w][j]!=0){
           eff = ((double) totASS[w][j])/((double) totSIM[w][j]);
-          h_effic[w]->Fill(etaintervals[w][j+1]-0.00001, eff);
-          h_effic[w]->setBinError(j,sqrt((eff*(1-eff))/((double) totASS[w][j])));
+          h_effic[w]->setBinContent(j+1, eff);
+          h_effic[w]->setBinError(j+1,sqrt((eff*(1-eff))/((double) totASS[w][j])));
         }
         else {
-          h_effic[w]->Fill(etaintervals[w][j+1]-0.00001, 0);
+          h_effic[w]->setBinContent(j+1, 0);
         }
       }
 
@@ -438,31 +438,31 @@ void MultiTrackValidator::endJob() {
       for (unsigned int j=0; j<totASS2[w].size(); j++){
         if (totREC[w][j]!=0){
           frate = 1-((double) totASS2[w][j])/((double) totREC[w][j]);
-          h_fakerate[w]->Fill(etaintervals[w][j+1]-0.00001, frate);
+          h_fakerate[w]->setBinContent(j+1, frate);
         }
         else {
-          h_fakerate[w]->Fill(etaintervals[w][j+1]-0.00001, 0);
+          h_fakerate[w]->setBinContent(j+1, 0);
         }
       }
 
       for (unsigned int j=0; j<totREC[w].size(); j++){
-	h_reco[w]->Fill(etaintervals[w][j+1]-0.00001, totREC[w][j]);
+	h_reco[w]->setBinContent(j+1, totREC[w][j]);
       }
       for (unsigned int j=0; j<totSIM[w].size(); j++){
-	h_simul[w]->Fill(etaintervals[w][j+1]-0.00001, totSIM[w][j]);
+	h_simul[w]->setBinContent(j+1, totSIM[w][j]);
       }
       for (unsigned int j=0; j<totASS[w].size(); j++){
-	h_assoc[w]->Fill(etaintervals[w][j+1]-0.00001, totASS[w][j]);
+	h_assoc[w]->setBinContent(j+1, totASS[w][j]);
       }
       for (unsigned int j=0; j<totASS2[w].size(); j++){
-	h_assoc2[w]->Fill(etaintervals[w][j+1]-0.00001, totASS2[w][j]);
+	h_assoc2[w]->setBinContent(j+1, totASS2[w][j]);
       }
       
       //fill hits vs eta plot
       for (unsigned int rr=0; rr<hitseta[w].size(); rr++){
 	if (totASS[w][rr]!=0)
-	  h_hits_eta[w]->Fill(etaintervals[w][rr+1]-0.00001,((double)  hitseta[w][rr])/((double) totASS[w][rr]));
-	else h_hits_eta[w]->Fill(etaintervals[w][rr+1]-0.00001, 0);
+	  h_hits_eta[w]->setBinContent(rr+1,((double)  hitseta[w][rr])/((double) totASS[w][rr]));
+	else h_hits_eta[w]->setBinContent(rr+1, 0);
       }
       w++;
     }
