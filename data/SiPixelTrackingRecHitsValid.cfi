@@ -1,0 +1,15 @@
+module PixelTrackingRecHitsValid = SiPixelTrackingRecHitsValid{
+	bool MTCCtrack=false
+	string TTRHBuilder="WithTrackAngle"
+	string Fitter = "KFFittingSmoother"   
+        string Propagator = "PropagatorWithMaterial" 
+        untracked string src = "ctfWithMaterialTracks"
+
+	untracked string outputFile = "pixeltrackingrechitshist.root"
+
+	# do we check that the simHit associated with recHit is of the expected particle type ?
+	bool checkType = true
+        # the type of particle that the simHit associated with recHits should be
+        int32 genType = 13
+	}
+
