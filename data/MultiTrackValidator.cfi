@@ -12,7 +12,7 @@ module multiTrackValidator = MultiTrackValidator {
     int32   nintpT= 200
     PSet    RecoTracksCuts = {
 	double ptMin = 0.8
-	double minRapidity = 0
+	double minRapidity =-2.5
 	double maxRapidity = 2.5
 	double tip = 3.5
 	double lip = 30
@@ -20,7 +20,7 @@ module multiTrackValidator = MultiTrackValidator {
     }
     PSet    TPEfficCuts = {
 	double ptMin = 0.9
-	double minRapidity = 0
+	double minRapidity =-2.4
 	double maxRapidity = 2.4
 	double tip = 3.5
 	double lip = 30
@@ -28,7 +28,7 @@ module multiTrackValidator = MultiTrackValidator {
     }
     PSet    TPFakeRateCuts = {
 	double ptMin = 0.7
-	double minRapidity = 0
+	double minRapidity =-2.6
 	double maxRapidity = 2.6
 	double tip = 120
 	double lip = 250
