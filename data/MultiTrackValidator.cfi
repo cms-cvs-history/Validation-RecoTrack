@@ -1,6 +1,7 @@
 module multiTrackValidator = MultiTrackValidator {
-    vstring label = {"ctfWithMaterialTracks","rsWithMaterialTracks"}
-    #can use also ctf/rsAnalyticalTracks
+    VInputTag label = {ctfWithMaterialTracks,rsWithMaterialTracks}
+    InputTag label_tp = trackingParticles
+    #can use also ctf/rsAnalyticalTracks, standAloneMuons, standAloneMuons:UpdatedAtVtx, ...
     vstring associators = {"TrackAssociatorByHits","TrackAssociatorByChi2"}
     string  sim   = "g4SimHits"
     string  out   = "validationPlots.root"
