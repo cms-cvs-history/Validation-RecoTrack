@@ -1,9 +1,0 @@
-module StripTrackingRecHitsValid = SiStripTrackingRecHitsValid{
-	bool MTCCtrack=false
-	string TTRHBuilder="WithTrackAngle"
-	string Fitter = "KFFittingSmoother"   
-        string Propagator = "PropagatorWithMaterial" 
-        untracked string src = "ctfWithMaterialTracks"
-        untracked string outputFile = "striptrackingrechitshisto.root"
-	}
-
