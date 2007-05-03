@@ -431,22 +431,27 @@ void MultiTrackValidator::endJob() {
 
       //resolution of track params: get sigma from 2D histos
       TH2F* d0res_eta = new TH2F("d0res_eta","d0res_eta",nint,min,max, 100, -0.01, 0.01);
+      copy2D(d0res_eta,d0res_vs_eta[w]);
       FitSlicesYTool fsyt_d0(d0res_eta);
       fsyt_d0.getFittedSigmaWithError(h_d0rmsh[w]);
       delete d0res_eta;
       TH2F* ptres_eta = new TH2F("ptres_eta","ptres_eta",nint,min,max, 100, -0.1, 0.1);
+      copy2D(ptres_eta,ptres_vs_eta[w]);
       FitSlicesYTool fsyt_pt(ptres_eta);
       fsyt_pt.getFittedSigmaWithError(h_ptrmsh[w]);
       delete ptres_eta;
       TH2F* z0res_eta = new TH2F("z0res_eta","z0res_eta",nint,min,max, 150, -0.05, 0.05);
+      copy2D(z0res_eta,z0res_vs_eta[w]);
       FitSlicesYTool fsyt_z0(z0res_eta);
       fsyt_z0.getFittedSigmaWithError(h_z0rmsh[w]);
       delete z0res_eta;
       TH2F* phires_eta = new TH2F("phires_eta","phires_eta",nint,min,max, 100, -0.003, 0.003);
+      copy2D(phires_eta,phires_vs_eta[w]);
       FitSlicesYTool fsyt_phi(phires_eta);
       fsyt_phi.getFittedSigmaWithError(h_phirmsh[w]);
       delete phires_eta;
       TH2F* cotThetares_eta = new TH2F("cotThetares_eta","cotThetares_eta",nint,min,max, 120, -0.01, 0.01);
+      copy2D(cotThetares_eta,cotThetares_vs_eta[w]);
       FitSlicesYTool fsyt_cotTheta(cotThetares_eta);
       fsyt_cotTheta.getFittedSigmaWithError(h_cotThetarmsh[w]);
       delete cotThetares_eta;
