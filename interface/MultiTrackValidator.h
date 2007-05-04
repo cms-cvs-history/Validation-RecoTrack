@@ -4,8 +4,8 @@
 /** \class MultiTrackValidator
  *  Class that prodecs histrograms to validate Track Reconstruction performances
  *
- *  $Date: 2007/03/27 12:48:24 $
- *  $Revision: 1.23 $
+ *  $Date: 2007/05/03 16:53:28 $
+ *  $Revision: 1.23.2.1 $
  *  \author cerati
  */
 
@@ -139,7 +139,7 @@ class MultiTrackValidator : public edm::EDAnalyzer {
       for (int binX=0;binX!=me->getNbinsX();binX++){
 	for (int binY=0;binY!=me->getNbinsY();binY++){
 	  th2->SetBinContent(binX+1,binY+1,me->getBinContent(binX+1,binY+1));
-	  th2->SetBinError(binY+1,binY+1,me->getBinError(binX+1,binY+1));
+	  //th2->SetBinError(binY+1,binY+1,me->getBinError(binX+1,binY+1));
 	}
       }
     } else {
