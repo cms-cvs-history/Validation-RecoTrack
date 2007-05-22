@@ -7,6 +7,7 @@
 <use name=DQMServices/CoreROOT>
 <use name=SimDataFormats/TrackerDigiSimLink>
 <use name=DataFormats/SiStripDetId> 
+<use name=Foundation/PluginManager>
 <use name=FWCore/ParameterSet>
 <use name=RecoTracker/TkSeedGenerator>
 <use name=TrackingTools/TrackFitters>
@@ -35,6 +36,7 @@
    <use name=boost>
    <use name=DQMServices/CoreROOT>
    <use name=SimDataFormats/TrackerDigiSimLink>
+   <use name=Foundation/PluginManager>
    <use name=FWCore/ParameterSet>
    <use name=RecoTracker/TkSeedGenerator>
    <use name=TrackingTools/TrackFitters>
@@ -51,4 +53,4 @@
    <use name=SimTracker/TrackAssociation>
    <use name=SimTracker/TrackerHitAssociation>
 </export>
-<flags EDM_PLUGIN=1>
+<flags SEAL_PLUGIN_NAME="ValidationRecoTrack">
