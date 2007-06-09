@@ -26,6 +26,7 @@ module multiTrackValidator = MultiTrackValidator {
 	double tip = 3.5
 	double lip = 30
 	int32  minHit = 0
+	vint32 pdgId = {}
     }
     PSet    TPFakeRateCuts = {
 	double ptMin = 0.7
@@ -34,6 +35,7 @@ module multiTrackValidator = MultiTrackValidator {
 	double tip = 120
 	double lip = 250
 	int32  minHit = 0
+	vint32 pdgId = {}
     }
 }
 
