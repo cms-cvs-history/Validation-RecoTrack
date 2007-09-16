@@ -7,6 +7,7 @@ module cutsTPFake = TrackingParticleSelector
     double tip = 120
     double lip = 250
     int32  minHit = 0
+    bool signalOnly = false
     vint32 pdgId = {}
 }
 
