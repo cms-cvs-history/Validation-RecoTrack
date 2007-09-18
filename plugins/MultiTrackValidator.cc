@@ -4,6 +4,7 @@
 #include "FWCore/Framework/interface/MakerMacros.h"
 
 #include "DataFormats/TrackReco/interface/Track.h"
+#include "DataFormats/TrackReco/interface/TrackFwd.h"
 #include "SimDataFormats/Track/interface/SimTrackContainer.h"
 #include "SimDataFormats/Vertex/interface/SimVertexContainer.h"
 #include "SimTracker/TrackAssociation/interface/TrackAssociatorByChi2.h"
@@ -271,7 +272,8 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
 		reco::TrackRef t = rt.begin()->first;
 		ats++;
 		totASSeta[w][f]++;
-		edm::LogVerbatim("TrackValidator") << "TrackingParticle #" << st << " with pt=" << t->pt() 
+		edm::LogVerbatim("TrackValidator") << "TrackingParticle #" << st 
+						   << " with pt=" << sqrt(tp->momentum().perp2()) 
 						   << " associated with quality:" << rt.begin()->second <<"\n";
 	      }
 	    }else{
