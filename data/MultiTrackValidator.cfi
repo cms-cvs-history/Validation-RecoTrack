@@ -8,6 +8,7 @@ module multiTrackValidator = MultiTrackValidator {
     double  min   = 0
     double  max   = 2.5
     int32   nint  = 25
+    bool    useFabsEta = true
     double  minpT = 0
     double  maxpT = 100
     int32   nintpT= 200

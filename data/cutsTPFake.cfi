@@ -1,6 +1,6 @@
 module cutsTPFake = TrackingParticleSelector
 {
-    InputTag src = trackingParticles
+    InputTag src = trackingtruthprod
     double ptMin = 0.7
     double minRapidity =-2.6
     double maxRapidity = 2.6
