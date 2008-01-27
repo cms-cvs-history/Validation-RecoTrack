@@ -14,7 +14,12 @@
 
 #include "SimDataFormats/TrackingAnalysis/interface/TrackingParticle.h"
 
+#if ROOT_VERSION_CODE >= ROOT_VERSION(5,15,0)
+#include "Math/ProbFuncMathCore.h"
+#else
 #include "Math/ProbFuncMathMore.h"
+#endif
+
 #include "FWCore/MessageLogger/interface/MessageLogger.h"
 #include "TrackingTools/TrajectoryState/interface/FreeTrajectoryState.h"
 #include "TrackingTools/PatternTools/interface/TSCPBuilderNoMaterial.h"
