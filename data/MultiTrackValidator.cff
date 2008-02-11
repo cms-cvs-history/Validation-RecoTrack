@@ -1,4 +1,5 @@
 include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
+include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
 
 service = DaqMonitorROOTBackEnd{}
     

@@ -1,0 +1,17 @@
+module seedValidator = SeedValidator {
+    VInputTag label = {globalMixedSeeds}
+    InputTag label_tp_effic = cutsTPEffic
+    InputTag label_tp_fake = cutsTPFake
+    vstring associators = {"TrackAssociatorByHits"}
+    string  sim   = "g4SimHits"
+    string  out   = "validationPlotsSeed.root"
+    double  min   = 0
+    double  max   = 2.5
+    int32   nint  = 25
+    bool    useFabsEta = true
+    double  minpT = 0
+    double  maxpT = 100
+    int32   nintpT= 200
+    string TTRHBuilder = "WithTrackAngle"
+}
+
