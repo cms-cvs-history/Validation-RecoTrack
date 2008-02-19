@@ -1,5 +1,6 @@
 module multiTrackValidator = MultiTrackValidator {
-    VInputTag label = {cutsCKF,cutsRS}
+    VInputTag label = {cutsRecoTracks}
+    InputTag beamSpot = offlineBeamSpot
     InputTag label_tp_effic = cutsTPEffic
     InputTag label_tp_fake = cutsTPFake
     vstring associators = {"TrackAssociatorByHits","TrackAssociatorByChi2"}
@@ -12,5 +13,8 @@ module multiTrackValidator = MultiTrackValidator {
     double  minpT = 0
     double  maxpT = 100
     int32   nintpT= 200
+    double  minHit = 0
+    double  maxHit = 25
+    int32   nintHit= 25
 }
 
