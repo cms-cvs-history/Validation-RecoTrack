@@ -14,6 +14,7 @@
 
 #include "SimDataFormats/TrackingAnalysis/interface/TrackingParticle.h"
 
+#include "TMath.h"
 #if ROOT_VERSION_CODE >= ROOT_VERSION(5,15,0)
 #include "Math/ProbFuncMathCore.h"
 #else
@@ -365,7 +366,7 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
 	    //association chi2
 	    double assocChi2 = -tp.begin()->second;//in association map is stored -chi2
 	    h_assochi2[www]->Fill(assocChi2);
-	    h_assochi2_prob[www]->Fill(ROOT::Math::chisquared_prob((assocChi2)*5,5));
+	    h_assochi2_prob[www]->Fill(TMath::Prob((assocChi2)*5,5));
 	  }
 	  else if (associators[ww]=="TrackAssociatorByHits"){
 	    double fraction = tp.begin()->second;
@@ -375,7 +376,7 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
     
 	  //nchi2 and hits global distributions
 	  h_nchi2[w]->Fill(track->normalizedChi2());
-	  h_nchi2_prob[w]->Fill(ROOT::Math::chisquared_prob(track->chi2(),track->ndof()));
+	  h_nchi2_prob[w]->Fill(TMath::Prob(track->chi2(),track->ndof()));
 	  h_hits[w]->Fill(track->numberOfValidHits());
 	  h_losthits[w]->Fill(track->numberOfLostHits());
 	  chi2_vs_nhits[w]->Fill(track->numberOfValidHits(),track->normalizedChi2());
