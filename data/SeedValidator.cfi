@@ -16,6 +16,7 @@ module seedValidator = SeedValidator {
     double  minHit = 0
     double  maxHit = 25
     int32   nintHit= 25
+    bool    useInvPt = false
     string TTRHBuilder = "WithTrackAngle"
 }
 
