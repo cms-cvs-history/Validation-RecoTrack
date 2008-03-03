@@ -1,5 +1,5 @@
 include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
 
-service = DaqMonitorROOTBackEnd{}
+include "DQMServices/Core/data/DQM.cfg"
     
 include "Validation/RecoTrack/data/SeedValidator.cfi"
