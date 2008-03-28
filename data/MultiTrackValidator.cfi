@@ -17,5 +17,6 @@ module multiTrackValidator = MultiTrackValidator {
     double  maxHit = 25
     int32   nintHit= 25
     bool    useInvPt = false
+    string  dirName = "RecoTrackV/Track/"
 }
 
