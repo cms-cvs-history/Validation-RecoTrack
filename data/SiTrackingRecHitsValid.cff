@@ -1,0 +1,7 @@
+include "RecoLocalTracker/SiStripRecHitConverter/data/StripCPE.cfi"
+include "Validation/RecoTrack/data/SiPixelTrackingRecHitsValid.cfi"
+include "Validation/RecoTrack/data/SiStripTrackingRecHitsValid.cfi"
+include "RecoTracker/TrackProducer/data/RefitterWithMaterial.cff"
+replace TrackRefitter.TrajectoryInEvent = true
+
+sequence trackingRecHitsValid = {TrackRefitter,PixelTrackingRecHitsValid,StripTrackingRecHitsValid}
