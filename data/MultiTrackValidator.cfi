@@ -1,5 +1,5 @@
 module multiTrackValidator = MultiTrackValidator {
-    VInputTag label = {cutsRecoTracks}
+    VInputTag label = {generalTracks}
     InputTag beamSpot = offlineBeamSpot
     InputTag label_tp_effic = cutsTPEffic
     InputTag label_tp_fake = cutsTPFake
@@ -13,10 +13,10 @@ module multiTrackValidator = MultiTrackValidator {
     double  minpT = 0
     double  maxpT = 100
     int32   nintpT= 200
-    double  minHit = 0
-    double  maxHit = 25
-    int32   nintHit= 25
     bool    useInvPt = false
+    double  minHit = 0
+    double  maxHit = 35
+    int32   nintHit= 35
     string  dirName = "RecoTrackV/Track/"
 }
 
