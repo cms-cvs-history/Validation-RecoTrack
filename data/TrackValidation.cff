@@ -2,4 +2,4 @@ include "SimTracker/TrackAssociation/data/TrackAssociatorByChi2.cfi"
 include "SimTracker/TrackAssociation/data/TrackAssociatorByHits.cfi"
 include "Validation/RecoTrack/data/cuts.cff"
 include "Validation/RecoTrack/data/MultiTrackValidator.cfi"
-sequence tracksValidation = {cutsRecoTracks, cutsRS, cutsTPEffic, cutsTPFake, multiTrackValidator}
+sequence tracksValidation = {cutsRecoTracks, cutsTPEffic, cutsTPFake, multiTrackValidator}
