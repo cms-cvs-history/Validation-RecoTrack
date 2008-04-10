@@ -9,4 +9,5 @@ module cutsCKF = RecoTrackSelector
     double lip = 300 #30
     int32  minHit = 3 #8
     double maxChi2 = 10000 #not used in tdr
+    string quality = "loose"
 }
