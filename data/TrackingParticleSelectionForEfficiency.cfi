@@ -1,0 +1,13 @@
+block TrackingParticleSelectionForEfficiency =
+{
+    double ptMinTP = 0.9
+    double minRapidityTP =-2.4
+    double maxRapidityTP = 2.4
+    double tipTP = 3.5
+    double lipTP = 30
+    int32  minHitTP = 0
+    bool signalOnlyTP = true
+    bool chargedOnlyTP = true
+    vint32 pdgIdTP = {}
+}
+
