@@ -11,9 +11,11 @@ module multiTrackValidator = MultiTrackValidator {
     
     ### if *not* uses associators, the TP-RecoTrack maps has to be specified 
     bool UseAssociators = false
+
     InputTag associatormap = trackingParticleRecoTrackAsssociation   
     #InputTag associatormap = assoc2secStepTk
     #InputTag associatormap = assoc2thStepTk   
+    #InputTag associatormap = assoc2GsfTracks   
 	
     ### selection of TP for evaluation of efficiency
     using TrackingParticleSelectionForEfficiency
