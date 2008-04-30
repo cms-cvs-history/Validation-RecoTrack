@@ -7,7 +7,7 @@ module multiTrackValidator = MultiTrackValidator {
     InputTag label_tp_fake = mergedtruth:MergedTrackTruth
 
     ### 
-    vstring associators = {"TrackAssociatorByHits","TrackAssociatorByChi2"}
+    vstring associators = {"TrackAssociatorByHits"}
     
     ### if *not* uses associators, the TP-RecoTrack maps has to be specified 
     bool UseAssociators = false
