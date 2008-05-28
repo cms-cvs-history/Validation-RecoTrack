@@ -3,7 +3,7 @@ module PixelTrackingRecHitsValid = SiPixelTrackingRecHitsValid{
 	string TTRHBuilder="WithTrackAngle"
 	string Fitter = "KFFittingSmoother"   
         string Propagator = "PropagatorWithMaterial" 
-        untracked string src = "generalTracks"
+        untracked string src = "TrackRefitter"
 
 	untracked string outputFile = "pixeltrackingrechitshist.root"
 
