@@ -3,7 +3,7 @@ module PixelTrackingRecHitsValid = SiPixelTrackingRecHitsValid{
 	string TTRHBuilder="WithTrackAngle"
 	string Fitter = "KFFittingSmoother"   
         string Propagator = "PropagatorWithMaterial" 
-        untracked string src = "generalTracks"
+        untracked string src = "TrackRefitter"
 
 	untracked string outputFile = "pixeltrackingrechitshist.root"
 
@@ -11,5 +11,24 @@ module PixelTrackingRecHitsValid = SiPixelTrackingRecHitsValid{
 	bool checkType = true
         # the type of particle that the simHit associated with recHits should be
         int32 genType = 13
+    bool associatePixel = true
+    bool associateStrip = false
+    bool associateRecoTracks = false
+      vstring ROUList = {
+        #For running only strip or pixel comment out the appropriate strings
+        #TIB
+        #"TrackerHitsTIBLowTof","TrackerHitsTIBHighTof",
+        #TID
+        #"TrackerHitsTIDLowTof","TrackerHitsTIDHighTof",
+        #TOB
+        #"TrackerHitsTOBLowTof","TrackerHitsTOBHighTof",
+        #TEC
+        #"TrackerHitsTECLowTof","TrackerHitsTECHighTof",
+        #BPIX
+        "g4SimHitsTrackerHitsPixelBarrelLowTof","g4SimHitsTrackerHitsPixelBarrelHighTof",
+        #FPIX
+        "g4SimHitsTrackerHitsPixelEndcapLowTof","g4SimHitsTrackerHitsPixelEndcapHighTof"
+  }
+
 	}
 
