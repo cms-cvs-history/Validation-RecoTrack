@@ -15,6 +15,7 @@ cutsRecoTracks = cms.EDFilter("RecoTrackSelector",
     maxRapidity = cms.double(5.0), ##2.5
 
     quality = cms.string('loose'),
+    algorithm = cms.string(''),
     minHit = cms.int32(3) ##8
 
 )
