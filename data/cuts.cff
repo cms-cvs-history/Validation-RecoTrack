@@ -1,5 +1,3 @@
 include "Validation/RecoTrack/data/cutsRecoTracks.cfi"
-include "Validation/RecoTrack/data/cutsCKF.cfi"
-include "Validation/RecoTrack/data/cutsRS.cfi"
 include "Validation/RecoTrack/data/cutsTPEffic.cfi"
 include "Validation/RecoTrack/data/cutsTPFake.cfi"
