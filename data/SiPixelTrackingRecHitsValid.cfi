@@ -1,6 +1,6 @@
 module PixelTrackingRecHitsValid = SiPixelTrackingRecHitsValid{
 	bool MTCCtrack=false
-	string TTRHBuilder="WithTrackAngle"
+	string TTRHBuilder="WithAngleAndTemplate"
 	string Fitter = "KFFittingSmoother"   
         string Propagator = "PropagatorWithMaterial" 
         untracked string src = "TrackRefitter"
