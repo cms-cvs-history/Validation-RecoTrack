@@ -1,4 +1,4 @@
-module seedValidator = SeedValidator {
+module trackerSeedValidator = TrackerSeedValidator {
     VInputTag label = {globalMixedSeeds}
     InputTag beamSpot = offlineBeamSpot
     InputTag label_tp_effic = cutsTPEffic
