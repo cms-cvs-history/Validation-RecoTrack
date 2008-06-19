@@ -1,4 +1,3 @@
-include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
 
 include "DQMServices/Core/data/DQM.cfg"
     
