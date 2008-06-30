@@ -4,8 +4,8 @@
 /** \class MultiTrackValidator
  *  Class that prodecs histrograms to validate Track Reconstruction performances
  *
- *  $Date: 2008/02/21 09:36:20 $
- *  $Revision: 1.40 $
+ *  $Date: 2008/03/28 16:24:12 $
+ *  $Revision: 1.41 $
  *  \author cerati
  */
 #include "FWCore/Framework/interface/Frameworkfwd.h"
@@ -23,11 +23,11 @@ class MultiTrackValidator : public edm::EDAnalyzer, protected MultiTrackValidato
   virtual ~MultiTrackValidator(){ }
 
   /// Method called before the event loop
-  void beginJob( const edm::EventSetup &);
+  void beginRun( const edm::EventSetup &);
   /// Method called once per event
   void analyze(const edm::Event&, const edm::EventSetup& );
   /// Method called at the end of the event loop
-  void endJob();
+  void endRun();
 
  private:
   std::string dirName_;
