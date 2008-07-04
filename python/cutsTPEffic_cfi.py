@@ -1,7 +1,7 @@
 import FWCore.ParameterSet.Config as cms
 
 cutsTPEffic = cms.EDFilter("TrackingParticleSelector",
-    src = cms.InputTag("mergedtruth","MergedTrackTruth"),
+    src = cms.InputTag('mergedtruth','MergedTrackTruth'),
     chargedOnly = cms.bool(True),
     pdgId = cms.vint32(),
     tip = cms.double(3.5),
