@@ -4,8 +4,8 @@
 /** \class TrackerSeedValidator
  *  Class that prodecs histrograms to validate Track Reconstruction performances
  *
- *  $Date: 2008/06/13 18:16:28 $
- *  $Revision: 1.1.2.1 $
+ *  $Date: 2008/06/30 13:30:24 $
+ *  $Revision: 1.1.2.2 $
  *  \author cerati
  */
 
@@ -27,11 +27,11 @@ class TrackerSeedValidator : public edm::EDAnalyzer, protected MultiTrackValidat
   ~TrackerSeedValidator(){ }
 
   /// Method called before the event loop
-  void beginRun( const edm::EventSetup &);
+  void beginRun(edm::Run const&, edm::EventSetup const&);
   /// Method called once per event
   void analyze(const edm::Event&, const edm::EventSetup& );
   /// Method called at the end of the event loop
-  void endRun();
+  void endRun(edm::Run const&, edm::EventSetup const&);
   
  private:
   std::string builderName;

@@ -23,7 +23,7 @@
 using namespace std;
 using namespace edm;
 
-void MultiTrackValidator::beginRun( const EventSetup & setup) {
+void MultiTrackValidator::beginRun(Run const&, EventSetup const& setup) {
 
   dbe_->showDirStructure();
 
@@ -517,7 +517,7 @@ void MultiTrackValidator::analyze(const edm::Event& event, const edm::EventSetup
   }
 }
 
-void MultiTrackValidator::endRun() {
+void MultiTrackValidator::endRun(Run const&, EventSetup const&) {
   int w=0;
   for (unsigned int ww=0;ww<associators.size();ww++){
     for (unsigned int www=0;www<label.size();www++){
