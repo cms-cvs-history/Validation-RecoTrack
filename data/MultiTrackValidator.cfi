@@ -35,6 +35,9 @@ module multiTrackValidator = MultiTrackValidator {
     double  minHit = 0
     double  maxHit = 35
     int32   nintHit= 35
+    double  minPhi = -3.15 
+    double  maxPhi = 3.15 
+    int32   nintPhi= 63 
     string  dirName = "RecoTrackV/Track/"
 }
 
