@@ -1,5 +1,0 @@
-include "SimTracker/TrackAssociation/data/TrackAssociatorByChi2.cfi"
-include "SimTracker/TrackAssociation/data/TrackAssociatorByHits.cfi"
-include "Validation/RecoTrack/data/cuts.cff"
-include "Validation/RecoTrack/data/MultiTrackValidator.cfi"
-sequence tracksValidation = {cutsTPEffic, cutsTPFake, multiTrackValidator}
