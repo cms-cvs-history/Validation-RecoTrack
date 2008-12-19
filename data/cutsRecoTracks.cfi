@@ -1,1 +1,0 @@
-module cutsRecoTracks = recoTrackSelector from "PhysicsTools/RecoAlgos/data/recoTrackSelector.cfi"

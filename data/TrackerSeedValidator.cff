@@ -1,4 +1,0 @@
-
-include "DQMServices/Core/data/DQM.cfg"
-    
-include "Validation/RecoTrack/data/TrackerSeedValidator.cfi"
