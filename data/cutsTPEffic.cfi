@@ -1,1 +1,0 @@
-module cutsTPEffic =  trackingParticleSelector from "PhysicsTools/RecoAlgos/data/trackingParticleSelector.cfi"
