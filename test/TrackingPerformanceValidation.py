@@ -7,10 +7,10 @@
 # ------------------------------------------------------------------------------------------------ #
 
 # Relval release (set if different from $CMSSW_VERSION)
-NewRelease = 'CMSSW_3_3_5'
+NewRelease = 'CMSSW_3_4_0_pre6'
 
 # ReferenceRelease
-RefRelease = 'CMSSW_3_3_3'
+RefRelease = 'CMSSW_3_4_0_pre5'
 
 #--------------------------------------------------------
 # Startup standard relval samples
@@ -19,11 +19,11 @@ startupsamples = [
     # ---------------------------#
     #'RelValTTbar',
     #'RelValMinBias',
-    #'RelValQCD_Pt_3000_3500'
+    'RelValQCD_Pt_3000_3500'
 
     # pileup RelVal samples
     # ---------------------------#
-    'RelValTTbar_Tauola'
+    #'RelValTTbar_Tauola'
 ]
 
 #--------------------------------------------------------
@@ -45,7 +45,7 @@ idealsamples = [
 
     #This is pileup RelVal samples
     # ---------------------------#
-    'RelValZmumuJets_Pt_20_300_GEN'
+    #'RelValZmumuJets_Pt_20_300_GEN'
 
     # summer09 preproduction (the character '-' must be avoided)
     # ---------------------------#
@@ -66,17 +66,17 @@ numEventsMap = {
 # track algorithm name and quality. Can be a list.
 Algos = [
     'ootb',
-    'iter0',
-    'iter1',
-    'iter2',
-    'iter3',
-    'iter4',
-    'iter5'
+    #'iter0',
+    #'iter1',
+    #'iter2',
+    #'iter3',
+    #'iter4',
+    #'iter5'
 ]
 
 Qualities=[
     '',
-    'highPurity'
+    #'highPurity'
 ]
 
 #--------------------------------------------------------
@@ -87,15 +87,17 @@ TrackCollection = 'generalTracks'
 #Reference and new repository
 RefRepository = '/afs/cern.ch/cms/performance/tracker/activities/reconstruction/tracking_performance'
 #NewRepository = '/afs/cern.ch/cms/performance/tracker/activities/reconstruction/tracking_performance'
-NewRepository = 'pu'
+NewRepository = 'new'
 
 # Ideal and Statup tags
-IdealTag   = 'MC_31X_V9'
-StartupTag = 'STARTUP3X_V8D'
+IdealTag   = 'MC_3XY_V14'
+StartupTag = 'STARTUP3X_V14'
+#IdealTag   = 'MC_3XY_V12'
+#StartupTag = 'STARTUP3X_V11'
 
 # Ideal and Statup tags (if blank uses the new release version)
-RefIdealTag   = 'MC_31X_V9'
-RefStartupTag = 'STARTUP31X_V8'
+RefIdealTag   = 'MC_3XY_V12'
+RefStartupTag = 'STARTUP3X_V11'
 
 # Dataset Version ('', 'v1', 'v2', etc..)
 NewVersion = 'v1'

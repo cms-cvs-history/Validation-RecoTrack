@@ -1160,7 +1160,7 @@ void setStats(TH1* s,TH1* r, double startingY, double startingX, bool fit)
             f1->SetLineWidth(1);
         }
         TPaveStats* stat_box;
-        if(stat_box = dynamic_cast<TPaveStats*>(s->FindObject("stats")))
+        if( (stat_box = dynamic_cast<TPaveStats*>(s->FindObject("stats"))) )
         {
             if (fit) 
             {
@@ -1186,7 +1186,7 @@ void setStats(TH1* s,TH1* r, double startingY, double startingX, bool fit)
             f2->SetLineColor(4);
             f2->SetLineWidth(1);    
         }
-        if(stat_box = dynamic_cast<TPaveStats*>(r->FindObject("stats")))
+        if( (stat_box = dynamic_cast<TPaveStats*>(r->FindObject("stats"))) )
         {
             if (fit) 
             {
