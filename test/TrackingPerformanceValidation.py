@@ -7,7 +7,7 @@
 # ------------------------------------------------------------------------------------------------ #
 
 # Relval release (set if different from $CMSSW_VERSION)
-NewRelease = 'CMSSW_3_4_0_pre6'
+NewRelease = 'CMSSW_3_4_0_pre7'
 
 # ReferenceRelease
 RefRelease = 'CMSSW_3_4_0_pre5'
@@ -17,8 +17,8 @@ RefRelease = 'CMSSW_3_4_0_pre5'
 startupsamples = [
     # no pileup RelValsamples
     # ---------------------------#
-    #'RelValTTbar',
-    #'RelValMinBias',
+    'RelValTTbar',
+    'RelValMinBias',
     'RelValQCD_Pt_3000_3500'
 
     # pileup RelVal samples
@@ -32,16 +32,16 @@ startupsamples = [
 idealsamples = [
     # no pileup RelVal samples
     # ---------------------------#
-    #'RelValSingleMuPt1',
-    #'RelValSingleMuPt10',
-    #'RelValSingleMuPt100',
-    #'RelValSinglePiPt1',
-    #'RelValSinglePiPt10',
-    #'RelValSinglePiPt100',
-    #'RelValSingleElectronPt35',
-    #'RelValTTbar',
-    #'RelValQCD_Pt_3000_3500',
-    #'RelValMinBias'
+    'RelValSingleMuPt1',
+    'RelValSingleMuPt10',
+    'RelValSingleMuPt100',
+    'RelValSinglePiPt1',
+    'RelValSinglePiPt10',
+    'RelValSinglePiPt100',
+    'RelValSingleElectronPt35',
+    'RelValTTbar',
+    'RelValQCD_Pt_3000_3500',
+    'RelValMinBias'
 
     #This is pileup RelVal samples
     # ---------------------------#
@@ -66,17 +66,17 @@ numEventsMap = {
 # track algorithm name and quality. Can be a list.
 Algos = [
     'ootb',
-    #'iter0',
-    #'iter1',
-    #'iter2',
-    #'iter3',
-    #'iter4',
-    #'iter5'
+    'iter0',
+    'iter1',
+    'iter2',
+    'iter3',
+    'iter4',
+    'iter5'
 ]
 
 Qualities=[
     '',
-    #'highPurity'
+    'highPurity'
 ]
 
 #--------------------------------------------------------
@@ -199,7 +199,7 @@ class Sample:
         if  ( self.algorithm == 'ootb' or self.algorithm == '' ):
             return ''
         else:
-            return '\'' + sample.algorithm + '\''
+            return '\'' + self.algorithm + '\''
 
     def cfgQuality(self):
         if ( self.quality != '' ):
@@ -629,7 +629,7 @@ def prepareCmsCfg(sample,sequence):
 # Run the cms Job 
 # ------------------------------------------------------------------------------------------------ #
 def runCmsJob(sample, sequence):
-    command = 'cmsRun ' + sample.cmsCfgFileName() + ' >&  ' + sample.cfgFileName() + '.log < /dev/zero '
+    command = 'nohup cmsRun ' + sample.cmsCfgFileName() + ' >&  ' + sample.cfgFileName() + '.log < /dev/zero '
     if(verbose): print "running:", command
     result = os.system(command) == 0
     if(verbose): print "result of cmsRun", result
