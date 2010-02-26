@@ -7,10 +7,10 @@
 # ------------------------------------------------------------------------------------------------ #
 
 # Relval release (set if different from $CMSSW_VERSION)
-NewRelease = 'CMSSW_3_5_0_pre5'
+NewRelease = 'CMSSW_3_4_0_pre7'
 
 # ReferenceRelease
-RefRelease = 'CMSSW_3_4_0_pre3'
+RefRelease = 'CMSSW_3_4_0_pre5'
 
 #--------------------------------------------------------
 # Startup standard relval samples
@@ -46,6 +46,13 @@ idealsamples = [
     #This is pileup RelVal samples
     # ---------------------------#
     #'RelValZmumuJets_Pt_20_300_GEN'
+
+    # summer09 preproduction (the character '-' must be avoided)
+    # ---------------------------#
+    #'InclusiveMu5_Pt250__Summer09', 
+    #'InclusiveMu5_Pt50__Summer09', 
+    #'MinBias_herwig__Summer09', 
+    #'TTbar__Summer09'
 ]
 
 
@@ -83,12 +90,14 @@ RefRepository = '/afs/cern.ch/cms/performance/tracker/activities/reconstruction/
 NewRepository = 'new'
 
 # Ideal and Statup tags
-IdealTag   = 'MC_3XY_V20'
-StartupTag = 'START3X_V20'
+IdealTag   = 'MC_3XY_V14'
+StartupTag = 'STARTUP3X_V14'
+#IdealTag   = 'MC_3XY_V12'
+#StartupTag = 'STARTUP3X_V11'
 
 # Ideal and Statup tags (if blank uses the new release version)
-RefIdealTag   = 'MC_3XY_V15'
-RefStartupTag = 'STARTUP3X_V15'
+RefIdealTag   = 'MC_3XY_V12'
+RefStartupTag = 'STARTUP3X_V11'
 
 # Dataset Version ('', 'v1', 'v2', etc..)
 NewVersion = 'v1'
@@ -100,6 +109,11 @@ PileUp='noPU'
 # to append the filename  
 NewSelectionLabel=''
 RefSelectionLabel=''
+#RefSelectionLabel='gcc345'
+#NewSelectionLabel='gcc432'
+#RefSelectionLabel='SLC4gcc345'
+#NewSelectionLabel='SLC5gcc434'
+
 
 #--------------------------------------------------------
 # Sequence. Possible values:
