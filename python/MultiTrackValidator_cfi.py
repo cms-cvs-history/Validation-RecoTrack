@@ -84,5 +84,7 @@ multiTrackValidator = cms.EDFilter("MultiTrackValidator",
     # if *not* uses associators, the TP-RecoTrack maps has to be specified 
     UseAssociators = cms.bool(True),
     useLogPt=cms.untracked.bool(False),
-    useGsf=cms.bool(False)
+    useGsf=cms.bool(False),
+    # NewValidation corrects the Fake rates
+    NewValidation = cms.bool(False)
 )

@@ -4,8 +4,8 @@
 /** \class MultiTrackValidatorBase
  *  Base class for analyzers that produces histrograms to validate Track Reconstruction performances
  *
- *  $Date: 2009/09/04 22:22:52 $
- *  $Revision: 1.24 $
+ *  $Date: 2009/10/01 15:02:55 $
+ *  $Revision: 1.25 $
  *  \author cerati
  */
 
@@ -187,6 +187,11 @@ class MultiTrackValidatorBase {
     std::vector<int>    totSIMv_dz,totASSv_dz,totASS2v_dz,totRECv_dz;
     std::vector<int>    totSIMv_vertpos,totASSv_vertpos,totSIMv_zpos,totASSv_zpos; 
 
+    // for muon Validation
+    std::vector<int>    totASSveta_Quality05, totASSveta_Quality075;
+    std::vector<int>    totASSvpT_Quality05, totASSvpT_Quality075;
+    std::vector<int>    totASSv_phi_Quality05, totASSv_phi_Quality075;
+
     double step=(max-min)/nint;
     std::ostringstream title,name;
     etaintervalsv.push_back(min);
@@ -197,12 +202,18 @@ class MultiTrackValidatorBase {
       totASSveta.push_back(0);
       totASS2veta.push_back(0);
       totRECveta.push_back(0);
+      //
+      totASSveta_Quality05.push_back(0);
+      totASSveta_Quality075.push_back(0);
     }   
     etaintervals.push_back(etaintervalsv);
     totSIMeta.push_back(totSIMveta);
     totASSeta.push_back(totASSveta);
     totASS2eta.push_back(totASS2veta);
     totRECeta.push_back(totRECveta);
+    //
+    totASSeta_Quality05.push_back(totASSveta_Quality05);
+    totASSeta_Quality075.push_back(totASSveta_Quality075);
   
     double steppT = (maxpT-minpT)/nintpT;
     pTintervalsv.push_back(minpT);
@@ -215,12 +226,18 @@ class MultiTrackValidatorBase {
       totASSvpT.push_back(0);
       totASS2vpT.push_back(0);
       totRECvpT.push_back(0);
+      //
+      totASSvpT_Quality05.push_back(0);
+      totASSvpT_Quality075.push_back(0);
     }
     pTintervals.push_back(pTintervalsv);
     totSIMpT.push_back(totSIMvpT);
     totASSpT.push_back(totASSvpT);
     totASS2pT.push_back(totASS2vpT);
     totRECpT.push_back(totRECvpT);
+    //
+    totASSpT_Quality05.push_back(totASSvpT_Quality05); 
+    totASSpT_Quality075.push_back(totASSvpT_Quality075);
 
     for (int k=1;k<nintHit+1;k++) {
       totSIMv_hit.push_back(0);
@@ -242,12 +259,18 @@ class MultiTrackValidatorBase {
       totASSv_phi.push_back(0);
       totASS2v_phi.push_back(0);
       totRECv_phi.push_back(0);
+      //
+      totASSv_phi_Quality05.push_back(0);
+      totASSv_phi_Quality075.push_back(0);
     }
     phiintervals.push_back(phiintervalsv);
     totSIM_phi.push_back(totSIMv_phi);
     totASS_phi.push_back(totASSv_phi);
     totASS2_phi.push_back(totASS2v_phi);
     totREC_phi.push_back(totRECv_phi);
+    //
+    totASS_phi_Quality05.push_back(totASSv_phi_Quality05);
+    totASS_phi_Quality075.push_back(totASSv_phi_Quality075);
 
     double stepDxy = (maxDxy-minDxy)/nintDxy;
     dxyintervalsv.push_back(minDxy);
@@ -365,6 +388,10 @@ class MultiTrackValidatorBase {
   std::vector<MonitorElement*> h_effic_vs_vertpos, h_effic_vs_zpos, h_assocvertpos, h_simulvertpos, h_assoczpos, h_simulzpos;
   std::vector<MonitorElement*> h_pt, h_eta, h_pullTheta,h_pullPhi,h_pullDxy,h_pullDz,h_pullQoverp;
 
+  std::vector<MonitorElement*> h_effic_Quality05, h_assoceta_Quality05, h_effic_Quality075, h_assoceta_Quality075;
+  std::vector<MonitorElement*> h_efficPt_Quality05, h_assocpT_Quality05, h_efficPt_Quality075, h_assocpT_Quality075;
+  std::vector<MonitorElement*> h_effic_vs_phi_Quality05, h_assocphi_Quality05, h_effic_vs_phi_Quality075, h_assocphi_Quality075;
+
   //2D  
   std::vector<MonitorElement*> nrec_vs_nsim;
   std::vector<MonitorElement*> nrecHit_vs_nsimHit_sim2rec;
@@ -404,6 +431,13 @@ class MultiTrackValidatorBase {
   std::vector< std::vector<int> > totSIM_dxy,totREC_dxy,totASS_dxy,totASS2_dxy;
   std::vector< std::vector<int> > totSIM_dz,totREC_dz,totASS_dz,totASS2_dz;
   std::vector< std::vector<int> > totSIM_vertpos,totASS_vertpos,totSIM_zpos,totASS_zpos;
+
+  // for muon Validation (SimToReco distributions for Quality > 0.5, 0.75)
+  std::vector<MonitorElement*> h_PurityVsQuality;
+  std::vector< std::vector<int> > totASSeta_Quality05,totASSeta_Quality075;
+  std::vector< std::vector<int> > totASSpT_Quality05, totASSpT_Quality075;
+  std::vector< std::vector<int> > totASS_phi_Quality05, totASS_phi_Quality075;
+
 };
 
 
