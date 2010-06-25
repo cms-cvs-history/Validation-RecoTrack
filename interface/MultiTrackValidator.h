@@ -4,8 +4,8 @@
 /** \class MultiTrackValidator
  *  Class that prodecs histrograms to validate Track Reconstruction performances
  *
- *  $Date: 2009/07/23 09:04:27 $
- *  $Revision: 1.47 $
+ *  $Date: 2008/07/16 16:27:59 $
+ *  $Revision: 1.45 $
  *  \author cerati
  */
 #include "FWCore/Framework/interface/Frameworkfwd.h"
@@ -30,6 +30,7 @@ class MultiTrackValidator : public edm::EDAnalyzer, protected MultiTrackValidato
 					  pset.getParameter<int>("minHitTP"),
 					  pset.getParameter<bool>("signalOnlyTP"),
 					  pset.getParameter<bool>("chargedOnlyTP"),
+                                          pset.getParameter<bool>("stableOnlyTP"),
 					  pset.getParameter<std::vector<int> >("pdgIdTP"));
     cosmictpSelector = CosmicTrackingParticleSelector(pset.getParameter<double>("ptMinTP"),
 						      pset.getParameter<double>("minRapidityTP"),
@@ -61,7 +62,7 @@ class MultiTrackValidator : public edm::EDAnalyzer, protected MultiTrackValidato
   /// Method called at the end of the event loop
   void endRun(edm::Run const&, edm::EventSetup const&);
 
-private:
+ private:
   /// retrieval of reconstructed momentum components from reco::Track (== mean values for GSF) 
   void getRecoMomentum (const reco::Track& track, double& pt, double& ptError,
 			double& qoverp, double& qoverpError, double& lambda, double& lambdaError,  
@@ -99,17 +100,17 @@ private:
   //chi2 and # lost hits vs eta: to be used with doProfileX
   std::vector<MonitorElement*> chi2_vs_eta, nlosthits_vs_eta;
   std::vector<MonitorElement*> h_chi2meanh, h_losthits_eta;
-  std::vector<MonitorElement*> h_hits_phi;  
+  std::vector<MonitorElement*> h_hits_phi;
   std::vector<MonitorElement*> h_chi2meanhitsh, h_chi2mean_vs_phi;
+  //  std::vector<MonitorElement*> h_hits_phi, h_ptresmean_vs_phi, h_phiresmean_vs_phi; 
+  //  std::vector<MonitorElement*> h_chi2meanhitsh, h_ptresmean_vs_eta, h_phiresmean_vs_eta, h_chi2mean_vs_phi;
 
   //resolution of track params: to be used with fitslicesytool
   std::vector<MonitorElement*> dxyres_vs_eta, ptres_vs_eta, dzres_vs_eta, phires_vs_eta, cotThetares_vs_eta;
   std::vector<MonitorElement*> dxyres_vs_pt, ptres_vs_pt, dzres_vs_pt, phires_vs_pt, cotThetares_vs_pt;
-
   std::vector<MonitorElement*> h_dxyrmsh, h_ptrmsh, h_dzrmsh, h_phirmsh, h_cotThetarmsh;
   std::vector<MonitorElement*> h_dxyrmshPt, h_ptrmshPt, h_dzrmshPt, h_phirmshPt, h_cotThetarmshPt;
   std::vector<MonitorElement*> h_ptrmshPhi, h_phirmshPhi;
-  //  std::vector<MonitorElement*> h_phimeanh,h_ptmeanhhi, h_phimeanhPhi;
 
   std::vector<MonitorElement*> h_dxymeanh, h_ptmeanh, h_dzmeanh, h_phimeanh, h_cotThetameanh;
   std::vector<MonitorElement*> h_dxymeanhPt, h_ptmeanhPt, h_dzmeanhPt, h_phimeanhPt, h_cotThetameanhPt;
